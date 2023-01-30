@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+
+<h1>Functions & validation</h1>
+
+<form id="form1" action="#" onsubmit="return validateForm(this);">
+  first name: <input type="text" name="firstname"><br>
+  last name: <input type="text" name="lastname"><br>
+  password: <input type="text" name="password"><br>
+
+  <button >Check</button>
+</form>
+
+<hr><div id="message"></div>
+
+<script>
+
+// add validatePassword function here
+function validatePassword(myForm) {
+
+    var password = myForm.password.value; // get text of password field
+if (/[A-Z]/.test(password) == false) 
+    return alert("Password must contain one or more uppercase letters"); //this will check to see if password contains at least one uppercase letter
+  
+else if (/[a-z]/.test(password) == false) 
+    return alert("Password must contain one or more lowercase letters"); //this will check to see if password contains at least one lowercase letter
+  
+else if (password.length < 8) 
+    return alert("Password must contain 8 or more letters"); //will tell the user that the password isn't long enough
+  
+else 
+    return alert("Password meets all requirements"); // If all statements are false this message will pop up
+}
+
+
+
+
+const validateForm = (myForm) => {
+
+  var firstname = myForm.firstname.value; // get text of firstname field
+  var lastname = myForm.lastname.value; //get text of lastname field
+
+  // update 'message' DIV with appropriate wording
+  $("#message").html("Profile saved");
+
+  // Form validation code goes here
+validatePassword(myForm); // This should invoke the function I created earlier
+
+  if (firstname == "") {
+    alert("Input is required for first name");
+  } if (lastname == "") {
+    alert("Innput is required for last name");
+  }
+
+
+
+  return false; // prevent page reload
+}
+
+</script>
+
+</body>
+</html>
