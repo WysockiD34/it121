@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script src="roboDealer.js"></script>
+</head>
+<body>
+
+<h1>Robo Dealer</h1>
+
+  <button onclick="dealHand();">Deal Hand</button>
+
+<hr><div id="card_hand"></div>
+
+<script>
+
+var dealHand = function() {
+    var random = Math.floor(Math.random() * Cards.length); // did Cards.length so it wouldn't give an error if the number generated was not available 
+    var otherDeck = Cards[random]; //the randomly generated card will be put into the newly created array "otherDeck"
+    Cards.splice(random, 1); // this removes the random card from the array "Cards"
+    return otherDeck; // returns the randomly generated card
+
+    $("#card_hand").html("Button clicked");
+
+    return false;
+}
+
+document.write(JSON.stringify(dealHand(Cards.value)), JSON.stringify(dealHand(Cards)), JSON.stringify(dealHand(Cards)), JSON.stringify(dealHand(Cards)), JSON.stringify(dealHand(Cards))) //had to add this because it would  come up as [object, Object]
+//still having issues with having the cards come up as "value" of "suit"
+</script>
+
+</body>
+</html>
