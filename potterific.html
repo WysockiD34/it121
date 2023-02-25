@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <style>
+        .over {
+            background-color: orange;
+        }
+        .selected {
+            background-color: green;
+        }
+    </style>
+
+    <body>
+        <div id="buttons"></div>
+        <table border='1'>
+            <tr>
+                <th>name</th>
+                <th>role</th>
+                <th>house</th>
+                <th>gender</th>
+                <th>alignment</th>
+            </tr>
+        </table>
+        <button id="reset" onclick="window.location.reload()">reset</button>
+        <button id="g" onclick="getClickID(this.id)">Gryffindor</button>
+        <button id="s" onclick="getClickID(this.id)">Slytherin</button>
+        <button id="r" onclick="getClickID(this.id)">Ravenclaw</button>
+        <button id="h" onclick="getClickID(this.id)">Hufflepuff</button>
+    
+    </body>
+        
+        <script>
+        // list of characters
+        var characters = [
+        {name:"Albus Dumbledore", role:"staff", house:"Gryffindor",gender:"m",alignment:"good"},    
+        {name:"Nymphadora Tonks", role:"", house:"Hufflepuff",gender:"f",alignment:"good"},    
+        {name:"Ron Weasley", role:"student", house:"Gryffindor",gender:"m",alignment:"good"},    
+        {name:"Ginny Weasley", role:"student", house:"Gryffindor",gender:"f",alignment:"good"},    
+        {name:"Hermione Granger", role:"student", house:"Gryffindor",gender:"f",alignment:"good"},    
+        {name:"Mad-eye Moody", role:"staff", house:"",gender:"m",alignment:"good"},    
+        {name:"Prof McGonagall", role:"staff", house:"Gryffindor",gender:"f",alignment:"good"},    
+        {name:"Harry Potter", role:"student", house:"Gryffindor",gender:"m",alignment:"good"},    
+        {name:"Draco Malfoy", role:"student", house:"Slytherin",gender:"m",alignment:"evil"},    
+        {name:"Hagrid", role:"staff", house:"Gryffindor",gender:"m",alignment:"good"},    
+        {name:"Luna Lovegood", role:"student", house:"Ravenclaw",gender:"f",alignment:"good"},    
+        {name:"Voldemort", role:"", house:"Slytherin",gender:"m",alignment:"evil"},    
+        {name:"Bellatrix Lestrange", role:"", house:"Slytherin",gender:"f",alignment:"evil"},           
+        {name:"Severus Snape", role:"staff", house:"Slytherin",gender:"m",alignment:"?"}
+        ];
+
+
+        $(document).ready(function(){
+
+        var headers = ["name", "role", "house", "gender", "alignment"];
+        var table = document.createElement("TABLE");
+
+        for(var i = 0; i < characters.length; i++) { 
+            var row = table.insertRow(i);
+            row.insertCell(0).innerHTML = characters[i].name;
+            row.insertCell(1).innerHTML = characters[i].role;
+            row.insertCell(2).innerHTML = characters[i].house;
+            row.insertCell(3).innerHTML = characters[i].gender;
+            row.insertCell(4).innerHTML = characters[i].alignment;
+        }
+        document.body.append(table); // this creates the tables using the information from the array and pushes it out onto the webpage
+
+        $("tr:odd").css("background-color", "orange"); //sets rows to alternating colors
+
+        $("#g").click(function(){
+            $("tr:eq(2)").hide();
+            $("tr:eq(6)").hide();
+            $("tr:eq(9)").hide();
+            $("tr:eq(11)").hide();
+            $("tr:eq(12)").hide();
+            $("tr:eq(13)").hide();
+            $("tr:eq(14)").hide();
+        }); //this hides the entire row where characters are not in the same house
+
+        $("#s").click(function(){
+            $("tr:eq(1)").hide();
+            $("tr:eq(2)").hide();
+            $("tr:eq(3)").hide();
+            $("tr:eq(4)").hide();
+            $("tr:eq(5)").hide();
+            $("tr:eq(6)").hide();
+            $("tr:eq(7)").hide();
+            $("tr:eq(8)").hide();
+            $("tr:eq(10)").hide();
+            $("tr:eq(11)").hide();
+        }); //this hides the entire row where characters are not in the same house
+
+        $("#h").click(function(){
+            $("tr:eq(1)").hide();
+            $("tr:eq(3)").hide();
+            $("tr:eq(4)").hide();
+            $("tr:eq(5)").hide();
+            $("tr:eq(6)").hide();
+            $("tr:eq(7)").hide();
+            $("tr:eq(8)").hide();
+            $("tr:eq(9)").hide();
+            $("tr:eq(10)").hide();
+            $("tr:eq(11)").hide();
+            $("tr:eq(12)").hide();
+            $("tr:eq(13)").hide();
+            $("tr:eq(14)").hide();
+        }); //this hides the entire row where characters are not in the same house
+
+        $("#r").click(function(){
+            $("tr:eq(1)").hide();
+            $("tr:eq(2)").hide();
+            $("tr:eq(3)").hide();
+            $("tr:eq(4)").hide();
+            $("tr:eq(5)").hide();
+            $("tr:eq(6)").hide();
+            $("tr:eq(7)").hide();
+            $("tr:eq(8)").hide();
+            $("tr:eq(9)").hide();
+            $("tr:eq(10)").hide();
+            $("tr:eq(12)").hide();
+            $("tr:eq(13)").hide();
+            $("tr:eq(14)").hide();
+        }); //this hides the entire row where characters are not in the same house
+
+
+        /*
+        - add a button for each 'house' value - DONE
+        - add table row for each character - DONE
+        - set visible rows to alternating background color - DONE
+            
+        - add click handler to show only rows matching selected 'house'. Enable buttons to call this handler. -DONE
+        
+        - add click handler to reset table - DONE
+        */
+
+        });
+
+        </script>
+</html>
