@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+
+<h1>Robo Dealer</h1>
+
+  <button onclick="dealHand();">Deal Hand</button>
+  <button id="reset" onclick="window.location.reload()">reset</button>
+
+<hr><div id="card_hand"></div>
+
+<script>
+
+const suits = ["diamonds", "hearts", "spades", "clubs"];
+const values = ["ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"];
+
+const deck = [];
+
+for (const suit of suits) {
+    for (const value of values) {
+        const card = {
+            suit: suit,
+            value: value,
+        }
+        deck.push(card.value + " of " + card.suit)
+    }
+}
+
+random = () => {
+    return Math.floor(Math.random() * 52);
+}
+
+randomCard = (deck) => {
+    const cards = random()
+    return deck[cards]
+}
+
+let fiveCards = [randomCard(deck), randomCard(deck), randomCard(deck), randomCard(deck), randomCard(deck)];
+
+const dealHand = () => {
+
+  /* code to deal a card hand goes here */
+
+  // update 'card_hand' DIV with appropriate information
+  $("#card_hand").text(JSON.stringify(fiveCards));
+
+  return false; // prevent page reload
+}
+
+</script>
+
+</body>
+</html>
